@@ -5,37 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>بن القدس — قائمة المشروبات</title>
   <style>
-    /* ===== Brand Colors ===== */
     :root{
-      --cream:#F5E9DA;  /* خلفية كريمية */
-      --brown:#5C3A21;  /* بني رئيسي */
-      --green:#2E5E3D;  /* أخضر حبّة البن */
-      --gold:#D6B36A;   /* ذهبي للفواصل */
-      --deep:#3B2A20;   /* بني داكن للهيدر/الفوتر */
-      --ink:#2b2b2b;    /* نص غامق عند اللزوم */
-      --page-w: 880px;  /* أقصى عرض للمحتوى */
+      --cream:#F5E9DA;
+      --brown:#5C3A21;
+      --green:#2E5E3D;
+      --gold:#D6B36A;
+      --deep:#3B2A20;
+      --ink:#2b2b2b;
+      --page-w: 880px;
     }
 
-    /* ===== Base ===== */
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0; color:var(--cream); font-family:"Tahoma", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
-      background:
-        linear-gradient(180deg, #3b2a20 0%, #5a3e2c 100%);
-      /* حبيبات خفيفة */
+      background:linear-gradient(180deg,#3b2a20 0%,#5a3e2c 100%);
       position:relative;
     }
-    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 40 40"><g fill="%23ffffff"><circle cx="3" cy="7" r=".6"/><circle cx="24" cy="18" r=".8"/><circle cx="12" cy="32" r=".5"/><circle cx="34" cy="6" r=".4"/></g></svg>'); background-size:140px 140px}
+    body:before{
+      content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;
+      background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 40 40"><g fill="%23ffffff"><circle cx="3" cy="7" r=".6"/><circle cx="24" cy="18" r=".8"/><circle cx="12" cy="32" r=".5"/><circle cx="34" cy="6" r=".4"/></g></svg>');
+      background-size:140px 140px
+    }
 
     .container{max-width:var(--page-w); margin:0 auto; padding:24px}
 
-    /* ===== Header ===== */
-    header{background:var(--deep); border-bottom:4px solid var(--gold); position:sticky; top:0; z-index:10}
+    header{
+      background:var(--deep);
+      border-bottom:4px solid var(--gold);
+      position:sticky; top:0; z-index:10
+    }
     .header-inner{display:flex; align-items:center; gap:20px; padding:18px 0}
 
-    /* Logo (inline SVG) */
-    .logo{width:84px; height:84px; flex:0 0 auto; border-radius:50%; background:var(--cream); display:grid; place-items:center; box-shadow:0 2px 10px rgba(0,0,0,.25); border:3px solid var(--gold)}
+    .logo{
+      width:84px; height:84px; flex:0 0 auto;
+      border-radius:50%;
+      background:var(--cream);
+      display:grid; place-items:center;
+      box-shadow:0 2px 10px rgba(0,0,0,.25);
+      border:3px solid var(--gold)
+    }
     .logo svg{width:68px; height:68px}
 
     .brand{display:flex; flex-direction:column; gap:6px}
@@ -43,36 +52,61 @@
     .brand small{color:var(--gold)}
 
     .lang-switch{margin-inline-start:auto; display:flex; gap:8px}
-    .btn{appearance:none; border:1px solid var(--gold); color:var(--gold); background:transparent; padding:8px 14px; border-radius:999px; cursor:pointer; font-weight:700}
+    .btn{
+      appearance:none; border:1px solid var(--gold); color:var(--gold);
+      background:transparent; padding:8px 14px;
+      border-radius:999px; cursor:pointer; font-weight:700
+    }
     .btn.active, .btn:hover{background:var(--gold); color:var(--deep)}
 
-    /* ===== Menu ===== */
     main{padding-block:26px 60px}
     .menu{display:grid; gap:22px}
     @media (min-width:700px){.menu{grid-template-columns:1fr 1fr 1fr}}
 
-    .card{background:rgba(0,0,0,.18); border:1px solid rgba(214,179,106,.5); border-radius:16px; overflow:hidden}
-    .card header{position:relative; top:auto}
-    .card h2{margin:0; padding:14px 18px; background:linear-gradient(to right, rgba(214,179,106,.25), rgba(214,179,106,0)); border-bottom:1px solid var(--gold); font-size:20px}
-    .list{padding:16px 18px 20px}
-    .list li{list-style:none; padding:10px 0; border-bottom:1px dashed rgba(214,179,106,.35)}
+    .card{
+      background:rgba(0,0,0,.18);
+      border:1px solid rgba(214,179,106,.5);
+      border-radius:16px;
+      overflow:hidden
+    }
+    .card h2{
+      margin:0;
+      padding:14px 18px;
+      background:linear-gradient(to right, rgba(214,179,106,.25), rgba(214,179,106,0));
+      border-bottom:1px solid var(--gold);
+      font-size:20px
+    }
+    .list{padding:16px 18px 20px; margin:0}
+    .list li{
+      list-style:none;
+      padding:10px 0;
+      border-bottom:1px dashed rgba(214,179,106,.35)
+    }
     .list li:last-child{border-bottom:0}
 
-    /* ===== Footer ===== */
-    footer{background:var(--deep); border-top:4px solid var(--gold); color:var(--gold); padding:14px}
-    footer .inner{max-width:var(--page-w); margin:0 auto; text-align:center; font-size:13px}
+    footer{
+      background:var(--deep);
+      border-top:4px solid var(--gold);
+      color:var(--gold);
+      padding:14px
+    }
+    footer .inner{
+      max-width:var(--page-w);
+      margin:0 auto;
+      text-align:center;
+      font-size:13px;
+      line-height:1.6;
+    }
 
-    /* ===== Print: A4 vertical ===== */
     @media print{
-      :root{--page-w: 180mm}
-      header, .lang-switch{position:static}
+      :root{--page-w:180mm}
+      header,.lang-switch{position:static}
       body{background:#3b2a20}
       .btn{display:none}
       body:before{display:none}
       footer{page-break-after:auto}
     }
 
-    /* English layout (LTR) */
     .en{direction:ltr}
     .en .brand h1{font-family:"Segoe UI", Arial, sans-serif}
   </style>
@@ -81,7 +115,6 @@
   <header>
     <div class="container header-inner">
       <div class="logo" aria-hidden="true">
-        <!-- Simple coffee-cup emblem matching colors -->
         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
           <circle cx="50" cy="50" r="46" fill="none" stroke="var(--brown)" stroke-width="6" />
           <rect x="25" y="45" width="40" height="22" rx="4" fill="var(--brown)"/>
@@ -91,7 +124,7 @@
         </svg>
       </div>
       <div class="brand">
-        <h1>بن القدس — BIN AL‑QUDS COFFEE</h1>
+        <h1>بن القدس — BIN AL-QUDS COFFEE</h1>
         <small>قائمة مشروبات بدون أسعار • Menu without prices</small>
       </div>
       <div class="lang-switch" role="group" aria-label="Language switch">
@@ -104,62 +137,146 @@
   <!-- ===== Arabic Menu ===== -->
   <main class="container" id="menu-ar" aria-label="Arabic menu">
     <div class="menu">
+      <!-- قهوة ساخنة -->
       <section class="card">
-        <h2>ركن الإسبريسو</h2>
+        <h2>قهوة ساخنة</h2>
         <ul class="list">
-          <li>إسبريسو (سنقل/دبل)</li>
+          <li>تركي</li>
+          <li>فريسكاوي</li>
+          <li>قهوة بندق</li>
+          <li>قهوة كراميل</li>
+          <li>كابتشينو</li>
+          <li>كوفي لاتيه</li>
+          <li>نسكافيه بلاك</li>
+          <li>نسكافيه بالحليب</li>
           <li>أمريكانو</li>
+          <li>إسبريسو</li>
           <li>ماكياتو</li>
           <li>كورتادو</li>
-          <li>كابتشينو</li>
-          <li>فلات وايت</li>
-          <li>لاتيه</li>
           <li>موكا</li>
-        </ul>
-      </section>
-      <section class="card">
-        <h2>ركن التحضير اليدوي</h2>
-        <ul class="list">
-          <li>في60</li>
-          <li>كيمكس</li>
-          <li>إيروبرس</li>
-          <li>فرنش برس</li>
-          <li>قهوة باردة (12 ساعة)</li>
-        </ul>
-      </section>
-      <section class="card">
-        <h2>البارد والتوقيعات</h2>
-        <ul class="list">
-          <li>آيس أمريكانو</li>
-          <li>آيس لاته</li>
-          <li>سبانيش لاته</li>
-          <li>كراميل مالح</li>
-          <li>فستق لاته</li>
           <li>أفوجاتو</li>
+          <li>شوكولاتة إسبريسو آيس كريم</li>
         </ul>
       </section>
+
+      <!-- قهوة باردة / فرابيه -->
       <section class="card">
-        <h2>الشاي والشوكولاتة</h2>
+        <h2>قهوة باردة و فرابيه</h2>
         <ul class="list">
-          <li>شاي مغربي</li>
-          <li>إيرل غراي / إنجليش بريكفست</li>
-          <li>ماتشا لاته</li>
-          <li>شوكولاتة ساخنة</li>
+          <li>آيس لاتيه</li>
+          <li>آيس كابتشينو</li>
+          <li>آيس موكا</li>
+          <li>آيس كراميل</li>
+          <li>آيس فانيليا (دارك / وايت)</li>
+          <li>فرابيه فانيليا</li>
+          <li>فرابيه أوريو</li>
+          <li>فرابيه كراميل</li>
+          <li>فرابيه موكا</li>
+          <li>فرابيه نوتيلا</li>
+          <li>فرابيه سنيكرز</li>
+          <li>فرابيه دبل شوكولاتة (دارك / وايت)</li>
         </ul>
       </section>
+
+      <!-- ميلك شيك -->
       <section class="card">
-        <h2>إضافات</h2>
+        <h2>ميلك شيك</h2>
         <ul class="list">
-          <li>إضافة شوت</li>
-          <li>حليب شوفان / لوز</li>
-          <li>نكهات فانيلا / كراميل / بندق</li>
-          <li>كريمة مخفوقة</li>
+          <li>فانيليا</li>
+          <li>شوكولاتة</li>
+          <li>فراولة</li>
+          <li>موكا</li>
+          <li>أوريو</li>
+          <li>سنكرز</li>
+          <li>كيت كات</li>
         </ul>
       </section>
+
+      <!-- عصائر / كوكتيل فواكه -->
       <section class="card">
-        <h2>الأحجام</h2>
+        <h2>عصاير و كوكتيل فواكه</h2>
         <ul class="list">
-          <li>صغير • متوسط • كبير</li>
+          <li>مانجو</li>
+          <li>جوافة حليب</li>
+          <li>فراولة حليب</li>
+          <li>موز حليب</li>
+          <li>بلح حليب</li>
+          <li>ليمون</li>
+          <li>ليمون نعناع</li>
+          <li>كيوي</li>
+          <li>أفوكادو</li>
+          <li>أفوكادو مكسرات</li>
+          <li>أفوكادو عسل</li>
+        </ul>
+      </section>
+
+      <!-- كوكتيلات وموهيتو -->
+      <section class="card">
+        <h2>كوكتيل مميز وموهيتو</h2>
+        <ul class="list">
+          <li>بلو هاواي</li>
+          <li>بلو بير</li>
+          <li>ريد بير</li>
+          <li>موهيتو ليمون نعناع</li>
+          <li>موهيتو كلاسيك</li>
+          <li>موهيتو بلو بير</li>
+          <li>موهيتو ريد بير</li>
+          <li>موهيتو ريد فروت</li>
+          <li>موهيتو ليمون فروت</li>
+          <li>كوكتيل أورنج</li>
+          <li>كوكتيل مانجو</li>
+          <li>كوكتيل فواكه</li>
+        </ul>
+      </section>
+
+      <!-- مشروبات ساخنة غير القهوة -->
+      <section class="card">
+        <h2>مشروبات ساخنة</h2>
+        <ul class="list">
+          <li>شاي</li>
+          <li>شاي نعناع</li>
+          <li>شاي كرك (زنجبيل - ليمون)</li>
+          <li>شاي براد صغير</li>
+          <li>شاي براد كبير</li>
+          <li>يانسون</li>
+          <li>حلبة</li>
+          <li>قرفة</li>
+          <li>نعناع</li>
+          <li>كركديه</li>
+          <li>سحلب بالمكسرات</li>
+          <li>سحلب فواكه</li>
+          <li>هوت شوكليت</li>
+          <li>دوم</li>
+        </ul>
+      </section>
+
+      <!-- مشروبات غازية -->
+      <section class="card">
+        <h2>مشروبات غازية ومياه</h2>
+        <ul class="list">
+          <li>بيبسي</li>
+          <li>بيبسي دايت</li>
+          <li>سفن أب</li>
+          <li>سفن أب دايت</li>
+          <li>ميرندا</li>
+          <li>كوكاكولا</li>
+          <li>كوكاكولا زيرو</li>
+          <li>مياه معدنية</li>
+        </ul>
+      </section>
+
+      <!-- بن القدس -->
+      <section class="card">
+        <h2>بن القدس (حسب الوزن)</h2>
+        <ul class="list">
+          <li>قهوة بندق (250 جم / 500 جم / كيلو)</li>
+          <li>محوج كلاسيك — تحويجة جيهان (250 جم / 500 جم / كيلو)</li>
+          <li>محوج إكسترا — جيهان + جوزة الطيب + زعفران (250 جم / 500 جم / كيلو)</li>
+          <li>محوج جينسينج — جيهان + جوزة الطيب + زعفران + جينسينج (250 جم / 500 جم / كيلو)</li>
+          <li>برازيلي سادة (250 جم / 500 جم / كيلو)</li>
+          <li>كولومبي سادة (250 جم / 500 جم / كيلو)</li>
+          <li>يمني سادة (250 جم / 500 جم / كيلو)</li>
+          <li>إسبريسو (250 جم / 500 جم / كيلو)</li>
         </ul>
       </section>
     </div>
@@ -168,73 +285,159 @@
   <!-- ===== English Menu ===== -->
   <main class="container en" id="menu-en" aria-label="English menu" hidden>
     <div class="menu">
+      <!-- Hot Coffee -->
       <section class="card">
-        <h2>ESPRESSO BAR</h2>
+        <h2>Hot Coffee</h2>
         <ul class="list">
-          <li>Espresso (Solo/Doppio)</li>
+          <li>Turkish Coffee</li>
+          <li>Freskawy Style Coffee</li>
+          <li>Hazelnut Coffee</li>
+          <li>Caramel Coffee</li>
+          <li>Cappuccino</li>
+          <li>Coffee Latte</li>
+          <li>Nescafé Black</li>
+          <li>Nescafé with Milk</li>
           <li>Americano</li>
+          <li>Espresso</li>
           <li>Macchiato</li>
           <li>Cortado</li>
-          <li>Cappuccino</li>
-          <li>Flat White</li>
-          <li>Latte</li>
           <li>Mocha</li>
-        </ul>
-      </section>
-      <section class="card">
-        <h2>BREW BAR</h2>
-        <ul class="list">
-          <li>V60 Pour Over</li>
-          <li>Chemex</li>
-          <li>AeroPress</li>
-          <li>French Press</li>
-          <li>Cold Brew (12h)</li>
-        </ul>
-      </section>
-      <section class="card">
-        <h2>ICED & SIGNATURE</h2>
-        <ul class="list">
-          <li>Iced Americano</li>
-          <li>Iced Latte</li>
-          <li>Spanish Latte</li>
-          <li>Salted Caramel Latte</li>
-          <li>Pistachio Latte</li>
           <li>Affogato</li>
+          <li>Espresso Chocolate with Ice Cream</li>
         </ul>
       </section>
+
+      <!-- Iced / Frappé -->
       <section class="card">
-        <h2>TEA & CHOCOLATE</h2>
+        <h2>Iced Coffee & Frappé</h2>
         <ul class="list">
-          <li>Moroccan Mint Tea</li>
-          <li>Earl Grey / English Breakfast</li>
-          <li>Matcha Latte</li>
+          <li>Iced Latte</li>
+          <li>Iced Cappuccino</li>
+          <li>Iced Mocha</li>
+          <li>Iced Caramel</li>
+          <li>Iced Vanilla (Dark / White)</li>
+          <li>Vanilla Frappé</li>
+          <li>Oreo Frappé</li>
+          <li>Caramel Frappé</li>
+          <li>Mocha Frappé</li>
+          <li>Nutella Frappé</li>
+          <li>Snickers Frappé</li>
+          <li>Double Chocolate Frappé (Dark / White)</li>
+        </ul>
+      </section>
+
+      <!-- Milkshake -->
+      <section class="card">
+        <h2>Milkshake</h2>
+        <ul class="list">
+          <li>Vanilla</li>
+          <li>Chocolate</li>
+          <li>Strawberry</li>
+          <li>Mocha</li>
+          <li>Oreo</li>
+          <li>Snickers</li>
+          <li>KitKat</li>
+        </ul>
+      </section>
+
+      <!-- Fresh Juices -->
+      <section class="card">
+        <h2>Fresh Juices & Fruit Mix</h2>
+        <ul class="list">
+          <li>Mango</li>
+          <li>Guava with Milk</li>
+          <li>Strawberry with Milk</li>
+          <li>Banana with Milk</li>
+          <li>Date with Milk</li>
+          <li>Lemon</li>
+          <li>Lemon Mint</li>
+          <li>Kiwi</li>
+          <li>Avocado</li>
+          <li>Avocado with Nuts</li>
+          <li>Avocado with Honey</li>
+        </ul>
+      </section>
+
+      <!-- Mojitos & Cocktails -->
+      <section class="card">
+        <h2>Special Cocktails & Mojitos</h2>
+        <ul class="list">
+          <li>Blue Hawaii</li>
+          <li>Blue Bear</li>
+          <li>Red Bear</li>
+          <li>Mojito Lemon Mint</li>
+          <li>Classic Mojito</li>
+          <li>Blue Bear Mojito</li>
+          <li>Red Bear Mojito</li>
+          <li>Red Fruit Mojito</li>
+          <li>Lemon Fruit Mojito</li>
+          <li>Orange Cocktail</li>
+          <li>Mango Cocktail</li>
+          <li>Fruit Cocktail</li>
+        </ul>
+      </section>
+
+      <!-- Hot Non-Coffee -->
+      <section class="card">
+        <h2>Hot Drinks</h2>
+        <ul class="list">
+          <li>Tea</li>
+          <li>Mint Tea</li>
+          <li>Karak Tea (Ginger - Lemon)</li>
+          <li>Small Teapot</li>
+          <li>Large Teapot</li>
+          <li>Anise</li>
+          <li>Hulba (Fenugreek Drink)</li>
+          <li>Cinnamon</li>
+          <li>Fresh Mint</li>
+          <li>Hibiscus</li>
+          <li>Sahlab with Nuts</li>
+          <li>Sahlab with Fruits</li>
           <li>Hot Chocolate</li>
+          <li>Doum (Palm Fruit Drink)</li>
         </ul>
       </section>
+
+      <!-- Soft Drinks -->
       <section class="card">
-        <h2>ADD‑ONS</h2>
+        <h2>Soft Drinks & Water</h2>
         <ul class="list">
-          <li>Extra Shot</li>
-          <li>Oat / Almond Milk</li>
-          <li>Vanilla / Caramel / Hazelnut Syrup</li>
-          <li>Whipped Cream</li>
+          <li>Pepsi</li>
+          <li>Pepsi Diet</li>
+          <li>7up</li>
+          <li>7up Diet</li>
+          <li>Mirinda</li>
+          <li>Coca-Cola</li>
+          <li>Coca-Cola Zero</li>
+          <li>Mineral Water</li>
         </ul>
       </section>
+
+      <!-- Coffee Beans -->
       <section class="card">
-        <h2>SIZES</h2>
+        <h2>Bin Al-Quds Coffee Beans (by weight)</h2>
         <ul class="list">
-          <li>Short • Tall • Grande</li>
+          <li>Hazelnut Coffee (250g / 500g / 1kg)</li>
+          <li>Classic "Mahawag" Blend — Jihan Mix (250g / 500g / 1kg)</li>
+          <li>Extra "Mahawag" — Jihan + Nutmeg + Saffron (250g / 500g / 1kg)</li>
+          <li>Ginseng Blend — Jihan + Nutmeg + Saffron + Ginseng (250g / 500g / 1kg)</li>
+          <li>Brazilian Plain (250g / 500g / 1kg)</li>
+          <li>Colombian Plain (250g / 500g / 1kg)</li>
+          <li>Yemeni Plain (250g / 500g / 1kg)</li>
+          <li>Espresso Blend (250g / 500g / 1kg)</li>
         </ul>
       </section>
     </div>
   </main>
 
   <footer>
-    <div class="inner">© بن القدس — اطلب من الباريستا محاصيل اليوم وملاحظات التذوق • Ask our barista for today’s origins and notes</div>
+    <div class="inner">
+      © بن القدس — اطلب البن حبّة أو مطحون  
+      / Call us: 01224036925
+    </div>
   </footer>
 
   <script>
-    // Toggle language
     const arBtn = document.getElementById('btn-ar');
     const enBtn = document.getElementById('btn-en');
     const arMenu = document.getElementById('menu-ar');
@@ -244,11 +447,14 @@
       const isAr = lang==='ar';
       document.documentElement.lang = isAr ? 'ar' : 'en';
       document.documentElement.dir = isAr ? 'rtl' : 'ltr';
-      arMenu.hidden = !isAr; enMenu.hidden = isAr;
-      arBtn.classList.toggle('active', isAr); enBtn.classList.toggle('active', !isAr);
+      arMenu.hidden = !isAr;
+      enMenu.hidden = isAr;
+      arBtn.classList.toggle('active', isAr);
+      enBtn.classList.toggle('active', !isAr);
     }
     arBtn.addEventListener('click', ()=>setLang('ar'));
     enBtn.addEventListener('click', ()=>setLang('en'));
   </script>
 </body>
 </html>
+
