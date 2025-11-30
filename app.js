@@ -49,7 +49,7 @@ function csvToArray(csv) {
 /* ===========================================================
    دالة تجهيز البيانات: parsing + filtering
 =========================================================== */
-function prepareMenuData(rows) {
+function prepareMenuData_old(rows) {
   const final = [];
 
   rows.forEach((row) => {
@@ -73,6 +73,45 @@ function prepareMenuData(rows) {
     const priceObj = {};
     sizes.forEach((s, i) => {
       priceObj[s] = priceValues[i] || 0;
+    });
+
+    final.push({
+      category_ar: row.category_ar,
+      category_en: row.category_en || row.category_ar,
+      item_ar: row.item_ar,
+      item_en: row.item_en || row.item_ar,
+      sizesParsed: sizes,
+      priceObj,
+    });
+  });
+
+  return final;
+}
+function prepareMenuData(rows) {
+  const final = [];
+
+  rows.forEach((row) => {
+    // تجاهل أي صنف غير Active
+    if (String(row.active).trim() !== "1") return;
+
+    // تجاهل أي سطر ناقص البيانات الأساسية
+    if (!row.category_ar || !row.item_ar) return;
+
+    // Parse sizes: "S|M|L"
+    const sizes = row.sizes
+      ? row.sizes.split("|").map((s) => s.trim())
+      : ["STD"];
+
+    // Parse prices: "20|18|22|25"
+    const priceValues = row.prices
+      ? row.prices.split("|").map((p) => Number(p.trim()))
+      : [0];
+
+    // تحويل الأسعار لأوبجكت مضبوط حسب index
+    const priceObj = {};
+    sizes.forEach((s, i) => {
+      // هنا لو السعر ناقص، نخلي 0 — مش ناخد قيمة غلط
+      priceObj[s] = Number(priceValues[i]) || 0;
     });
 
     final.push({
@@ -355,6 +394,7 @@ function renderCart() {
   const cartListEl = document.getElementById("cart-list");
   const cartTotalLine = document.getElementById("cart-total-line");
 
+
   const { totalQty, totalAmount } = getCartTotals();
 
   // update pills
@@ -390,15 +430,19 @@ function renderCart() {
     nameSpan.textContent = name + sizeLabel;
 
     const qtySpan = document.createElement("div");
-    qtySpan.textContent = "x " + item.qty;
+    // qtySpan.textContent = "x " + item.qty;
 
     const priceSpan = document.createElement("div");
-    priceSpan.textContent =
-      item.unitPrice > 0
-        ? formatCurrency(lineTotal)
-        : currentLang === "ar"
-        ? "بدون سعر"
-        : "No price";
+
+if (item.unitPrice > 0) {
+  priceSpan.textContent =
+    `${item.qty} × ${item.unitPrice} = ${item.qty * item.unitPrice} ${CURRENCY}`;
+} else {
+  priceSpan.textContent =
+    currentLang === "ar" ? "بدون سعر" : "No price";
+}
+
+
 
     const removeBtn = document.createElement("button");
     removeBtn.className = "remove";
@@ -641,6 +685,17 @@ async function initApp() {
 
   // 10) Default Language AR
   setLang("ar");
+
+  const infoBtn = document.getElementById("btn-info");
+  const cartStatus = document.querySelector(".cart-status");
+
+  infoBtn.addEventListener("click", () => {
+  if (cartStatus.style.display === "flex") {
+    cartStatus.style.display = "none";
+  } else {
+    cartStatus.style.display = "flex";
+  }
+});
 }
 
 function setLang(lang) {
